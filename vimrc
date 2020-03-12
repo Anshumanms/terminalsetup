@@ -137,8 +137,6 @@ let g:session_autoload = 'no'
 
 " Autoloading ctags
 "set tags=tags;
-set cst
-set csto=1
 set tags=./tags;,tags;,.git/hooks/tags;
 
 " Autoloading Cscope Database
