@@ -24,6 +24,11 @@ Plugin 'vim-colors-solarized'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
+" NerdTree
+Plugin 'preservim/nerdtree'
+
+" TagBar
+Plugin 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -94,10 +99,6 @@ set omnifunc=syntaxcomplete#Complete
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-let g:NERDTreeWinSize=32
-"autocmd VimEnter * NERDTree
-"autocmd VimEnter * wincmd p
-
 " Get cscope related mappings
 " Enabling cscope output on quickfix window
 set cscopequickfix=s-,c-,d-,i-,t-,e-,f-,a-
@@ -120,20 +121,6 @@ source ~/cscope_maps.vim
 
 " Keep binding for Goto reference
 "map <C-[> <C-\>c
-
-
-" Taglist plugin
-"let Tlist_Auto_Open = 1
-"let Tlist_Use_Right_Window = 1
-"let Tlist_Inc_Winwidth = 1
-"let Tlist_WinWidth = 30
-"let Tlist_Enable_Fold_Column = 0
-"let Tlist_Exit_OnlyWindow = 1
-
-"Vim Session auto save bannner
-let g:session_autosave = 'no'
-
-let g:session_autoload = 'no'
 
 " Autoloading ctags
 "set tags=tags;
@@ -159,7 +146,7 @@ call LoadCscope()
 
 "Keyboard shortcuts
 nmap <F8> :TagbarToggle<CR>
-nmap <F9> :NERDTree<CR>
+nmap <F9> :NERDTreeToggle<CR>
 
 " FZF key bindings
 source ~/fzf_maps.vim
