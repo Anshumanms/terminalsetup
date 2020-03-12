@@ -5,4 +5,5 @@ Vim, cscope and ctags based IDE
 https://github.com/datchina/vim_ide.git
 
 # Install
-source setup.sh
+cd vim_ide
+source ./setup.sh
