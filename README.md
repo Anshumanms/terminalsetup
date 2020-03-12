@@ -1,13 +1,23 @@
-# vim_ide
-Vim, cscope and ctags based IDE
+# vim-ide
+Vim, cscope, ctags and tmux based IDE
 
 # Download
-https://github.com/datchina/vim_ide.git
+git clone https://github.com/datchina/vim-ide.git
 
 # Install
-cd vim_ide
+cd vim-ide  
 ./install.sh
 
+# vim-ide commands cheat sheet
+# Cscope
+TBD  
+
+# Ctags
+TBD  
+
+# Tmux
+TBD  
+
 # Uninstall
-cd vim_ide
+cd vim-ide  
 ./uinstall.sh
