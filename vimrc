@@ -83,6 +83,7 @@ syntax enable
 if &diff
     "colorscheme dk_diff_color
     windo set nofoldenable
+    set diffopt=filler,context:1000000
 endif
 highlight DiffAdd cterm=none ctermfg=white ctermbg=Blue
 highlight DiffDelete cterm=none ctermfg=white ctermbg=Blue
@@ -163,9 +164,10 @@ if filereadable(".git/hooks/ext_proj.vim")
 endif
 
 " Auto tags updation on file save
-autocmd BufWritePost *.c,*.h,*.cpp 
-\   silent !source ./.git/hooks/ide
-\   silent cscope add ./.git/hooks/cscope.out
-\   silent cscope reset
+"autocmd BufWritePost *.c,*.h,*.cpp 
+"\   silent !source ./.git/hooks/ide
+"\   silent cscope add ./.git/hooks/cscope.out
+"\   silent cscope reset
 
+nmap <F10> :!source ./.git/hooks/ide<CR>:silent cscope add ./.git/hooks/cscope.out<CR><CR>:silent cscope reset<CR><CR>
 
