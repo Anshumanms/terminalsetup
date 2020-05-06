@@ -30,6 +30,15 @@ Plugin 'preservim/nerdtree'
 " TagBar
 Plugin 'majutsushi/tagbar'
 
+" Clang_complete
+"Plugin 'xavierd/clang_complete'
+
+" taglist
+Plugin 'vim-scripts/taglist.vim'
+
+" DirDiff
+Plugin 'will133/vim-dirdiff'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
@@ -93,8 +102,23 @@ highlight DiffText cterm=none ctermfg=white ctermbg=Red
 set filetype=c
 set nocp
 filetype plugin on
-"set omnifunc=ccomplete
-set omnifunc=syntaxcomplete#Complete
+set omnifunc=ccomplete
+
+"set omnifunc=syntaxcomplete#Complete
+"
+"set omnifunc=ClangComplete#Complete
+"set completefunc=ClangComplete
+"let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-6.0.so.1'
+"let g:clang_user_options='|| exit 0'
+"let g:clang_complete_auto = 1
+"let g:clang_complete_copen = 1
+"let g:clang_debug = 1
+
+" Tlist - http://vim-taglist.sourceforge.net/manual.html
+let g:Tlist_WinWidth=60
+let Tlist_GainFocus_On_ToggleOpen = 1
+let Tlist_Use_Right_Window = 1
+
 " Moved to cscope F12 key -- map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "to close automatically the preview window
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -146,7 +170,7 @@ call LoadCscope()
 "let $GIT_SSL_NO_VERIFY = 'true'
 
 "Keyboard shortcuts
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TlistToggle<CR>
 nmap <F9> :NERDTreeToggle<CR>
 
 " FZF key bindings
@@ -171,3 +195,5 @@ endif
 
 nmap <F10> :!source ./.git/hooks/ide<CR>:silent cscope add ./.git/hooks/cscope.out<CR><CR>:silent cscope reset<CR><CR>
 
+" Default to not read-only in vimdiff
+set noro
