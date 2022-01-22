@@ -3,6 +3,7 @@
 "######### Vundle Plugins #########
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set encoding=utf-8
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -18,7 +19,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'romainl/vim-qf'
 
 " Solarized vim
-Plugin 'vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 
 " FZF
 Plugin 'junegunn/fzf'
@@ -34,13 +35,47 @@ Plugin 'majutsushi/tagbar'
 "Plugin 'xavierd/clang_complete'
 
 " taglist
-Plugin 'vim-scripts/taglist.vim'
+Plugin 'yegappan/taglist'
 
 " DirDiff
 Plugin 'will133/vim-dirdiff'
 
+" Pathogen
+Plugin 'tpope/vim-pathogen'
+
+Plugin 'mileszs/ack.vim'
+
+" vim plugin for git
+Plugin 'tpope/vim-fugitive'
+
+" for advanced search
+Plugin 'haya14busa/incsearch.vim'
+
+Plugin 'jisaacks/GitGutter'
+
+Plugin 'Raimondi/delimitMate'
+
+" Auto completion
+Plugin 'codota/tabnine-vim'
+
+" Plugin for commenting multiple lines
+Plugin 'preservim/nerdcommenter'
+
+" Syntax checking for C/C++
+"Plugin 'vim-syntastic/syntastic'
+
+"Plugin 'bling/vim-airline'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
+" Vim plug package manager
+call plug#begin('~/.vim/plugged')
+" to show current function name using ctags
+Plug 'wellle/context.vim'
+
+call plug#end()
 
 " Brief help
 " :PluginList       - lists configured plugins
@@ -54,14 +89,14 @@ call vundle#end()            " required
 
 set nocompatible  " Use vim settings rather vi
 set nowrap        " don't wrap lines
-set tabstop=4     " a tab is four spaces
+set tabstop=8     " a tab is four spaces
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set smartindent    " always set autoindenting on
 set copyindent    " copy the previous indentation on autoindenting
 "set number        " always show line numbers
 set mouse=a       " enable all mouse access
 set ttymouse=xterm2 " this needs to be set to make mouse functional in screen sessions
-set shiftwidth=4  " number of spaces to use for autoindenting
+set shiftwidth=8  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
@@ -84,8 +119,8 @@ set laststatus=2
 set statusline=%F[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 
 syntax enable
-"set background=light
-"colorscheme solarized
+set background=dark
+colorscheme monokai
 "let g:solarized_termcolors=256
 
 "vimdiff colorscheme
@@ -197,3 +232,43 @@ nmap <F10> :!source ./.git/hooks/ide<CR>:silent cscope add ./.git/hooks/cscope.o
 
 " Default to not read-only in vimdiff
 set noro
+
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Keyboard mappings for multiple tabs in Vim
+"map <C-t><up> :tabr<cr>
+"map <C-t><down> :tabl<cr>
+"map <C-t><left> :tabp<cr>
+"map <C-t><right> :tabn<cr>
+
+" To retain the code fold on reopening Vim
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
+" Snippets config
+"let g:UltiSnipsExpandTrigger="<c-i>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+"Git airline config
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#whitespace#enabled = 0 
+" Enable terminal colours
+set t_Co=256
+" To enable powerline fonts for airline status
+"let g:airline_powerline_fonts = 1
+" Configure sections
+"let g:airline_section_b = '%-0.10{getcwd()}'
+"let g:airline_section_c = '%t'
+"let g:airline_section_b = ''
+
+" GitGutter related settings
+let g:gitgutter_enabled = 1
+set updatetime=100
+" To show GitGutterHunkSummary
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+    return printf(' +%d ~%d -%d', a, m, r)
+endfunction
+"set statusline+=%{GitStatus()}
